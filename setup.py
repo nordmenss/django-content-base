@@ -33,12 +33,7 @@ setup(
     author_email='nordmenss@gmail.com',
     url='https://github.com/nordmenss/django-content-base',
     package_dir={content_base: content_base},
-    packages=packages,
-<<<<<<< HEAD
     package_data={path: data_files},
-=======
-    package_data={content_base: data_files},
->>>>>>> a221bead895eced153aafea761d80fe7a31a71ed
     classifiers=[
         'Development Status :: 0 - Alpha',
         'Environment :: Web Environment',
