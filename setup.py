@@ -32,9 +32,9 @@ setup(
     author='NORD',
     author_email='nordmenss@gmail.com',
     url='https://github.com/nordmenss/django-content-base',
-    package_dir={path: path},
+    package_dir={content_base: content_base},
     packages=packages,
-    package_data={path: data_files},
+    package_data={content_base: data_files},
     classifiers=[
         'Development Status :: 0 - Alpha',
         'Environment :: Web Environment',
