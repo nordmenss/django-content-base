@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 from distutils.core import setup
 import os
-path='content-base'
-from path import VERSION
+from content_base import VERSION
+path='content_base'
 
 long_description = open('README.txt').read()
 packages, data_files = [], []
@@ -32,9 +32,9 @@ setup(
     author='NORD',
     author_email='nordmenss@gmail.com',
     url='https://github.com/nordmenss/django-content-base',
-    package_dir={'content-base': 'content-base'},
+    package_dir={path: path},
     packages=packages,
-    package_data={'content-base': data_files},
+    package_data={path: data_files},
     classifiers=[
         'Development Status :: 0 - Alpha',
         'Environment :: Web Environment',
