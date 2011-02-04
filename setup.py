@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 from distutils.core import setup
 import os
-from distutils.sysconfig import get_python_lib;
-#print get_python_lib()
+from distutils.sysconfig import get_python_lib
 from content_base import VERSION
 long_description = open('README.txt').read()
 path='content_base'
 dir=filename=get_python_lib()+"/"+path
 if os.path.exists(dir)==False:
     os.mkdir(dir)
-os.chdir(dir)
 
 packages, data_files = [], []
 
@@ -27,6 +25,8 @@ for dirpath, dirnames, filenames in os.walk(path):
         for f in filenames:
             filename=get_python_lib()+"/"+path+"/"+f
             data_files.append(filename)
+
+os.chdir(dir)
 
 setup(
     name='django-content-base',
