@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from distutils.core import setup
-import os
-from distutils.sysconfig import get_python_lib
+from setuptools import setup, find_packages
 from content_base import VERSION
 long_description = open('README.txt').read()
 
