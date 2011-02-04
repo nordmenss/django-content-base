@@ -4,13 +4,13 @@ import os
 from distutils.sysconfig import get_python_lib;
 #print get_python_lib()
 from content_base import VERSION
+long_description = open('README.txt').read()
 path='content_base'
 dir=filename=get_python_lib()+"/"+path
 if os.path.exists(dir)==False:
     os.mkdir(dir)
 os.chdir(dir)
 
-long_description = open('README.txt').read()
 packages, data_files = [], []
 
 for dirpath, dirnames, filenames in os.walk(path):
