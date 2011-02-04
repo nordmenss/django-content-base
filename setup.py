@@ -5,6 +5,10 @@ from distutils.sysconfig import get_python_lib;
 #print get_python_lib()
 from content_base import VERSION
 path='content_base'
+dir=filename=get_python_lib()+"/"+path
+if os.path.exists(dir)==False:
+    os.mkdir(dir)
+os.chdir(dir)
 
 long_description = open('README.txt').read()
 packages, data_files = [], []
@@ -22,7 +26,6 @@ for dirpath, dirnames, filenames in os.walk(path):
         prefix = dirpath[(len(path)+1):] # Strip "admin_tools/" or "admin_tools\"
         for f in filenames:
             filename=get_python_lib()+"/"+path+"/"+f
-            print filename
             data_files.append(filename)
 
 setup(
