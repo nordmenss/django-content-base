@@ -7,21 +7,6 @@ path='content_base'
 long_description = open('README.txt').read()
 packages, data_files = [], []
 
-for dirpath, dirnames, filenames in os.walk(path):
-    print filenames
-    # Ignore dirnames that start with '.'
-    for i, dirname in enumerate(dirnames):
-        if dirname.startswith('.'): del dirnames[i]
-    if '__init__.py' in filenames:
-        pkg = dirpath.replace(os.path.sep, '.')
-        if os.path.altsep:
-            pkg = pkg.replace(os.path.altsep, '.')
-        packages.append(pkg)
-    elif filenames:
-        prefix = dirpath[(len(path)+1):] # Strip "admin_tools/" or "admin_tools\"
-        for f in filenames:
-            data_files.append(os.path.join(prefix, f))
-
 setup(
     name='django-content-base',
     version='0.0',
