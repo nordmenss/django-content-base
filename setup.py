@@ -19,12 +19,16 @@ for dirpath, dirnames, filenames in os.walk(path):
         pkg = dirpath.replace(os.path.sep, '.')
         if os.path.altsep:
             pkg = pkg.replace(os.path.altsep, '.')
+        print "pkg=",pkg
         packages.append(pkg)
     elif filenames:
         prefix = dirpath[(len(path)+1):] # Strip "admin_tools/" or "admin_tools\"
         for f in filenames:
             filename=get_python_lib()+"/"+path+"/"+f
-            data_files.append(filename)
+            #data_files.append(filename)
+            filename=os.path.join(prefix, f)
+            print "filename=",filename
+            data_files.append(os.path.join(prefix, f))
 
 os.chdir(dir)
 
