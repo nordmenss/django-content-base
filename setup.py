@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-from distutils.core import setup
 from setuptools import setup, find_packages
 from content_base import VERSION
 long_description = open('README.txt').read()
@@ -12,8 +11,9 @@ setup(
     author='NORD',
     author_email='nordmenss@gmail.com',
     url='https://github.com/nordmenss/django-content-base',
-    packages=['content_base'],
+    packages=find_packages(),
     include_package_data=True,
+    zip_safe=False,
     classifiers=[
         'Development Status :: 0 - Alpha',
         'Environment :: Web Environment',
@@ -24,5 +24,4 @@ setup(
         'Framework :: Django',
     ],
     install_requires=[],
-    zip_safe=False,
 )
