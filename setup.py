@@ -6,11 +6,7 @@ path='content_base'
 
 long_description = open('README.txt').read()
 packages, data_files = [], []
-print __file__
-root_dir = os.path.dirname(__file__)
-if root_dir:
-    os.chdir(root_dir)
-print path
+
 for dirpath, dirnames, filenames in os.walk(path):
     print filenames
     # Ignore dirnames that start with '.'
