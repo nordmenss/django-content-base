@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 from distutils.core import setup
+<<<<<<< HEAD
 from content_base import VERSION
+=======
+from content_base import import VERSION
+>>>>>>> 525c1831fead9fb18081770c785f7d6dd383b357
 path='content_base'
 
 setup(name=path,
