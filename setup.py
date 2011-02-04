@@ -10,6 +10,9 @@ if os.path.exists(dir)==False:
     os.mkdir(dir)
 
 packages, data_files = [], []
+root_dir = os.path.dirname(__file__)
+if root_dir:
+    os.chdir(root_dir)
 
 for dirpath, dirnames, filenames in os.walk(path):
     # Ignore dirnames that start with '.'
