@@ -21,7 +21,9 @@ for dirpath, dirnames, filenames in os.walk(path):
     elif filenames:
         prefix = dirpath[(len(path)+1):] # Strip "admin_tools/" or "admin_tools\"
         for f in filenames:
-            data_files.append(get_python_lib()+"/"+path+"/"+f)
+            filename=get_python_lib()+"/"+path+"/"+f
+            print filename
+            data_files.append(filename)
 
 setup(
     name='django-content-base',
