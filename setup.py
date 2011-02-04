@@ -12,7 +12,7 @@ setup(
     author='NORD',
     author_email='nordmenss@gmail.com',
     url='https://github.com/nordmenss/django-content-base',
-    packages=find_packages(),
+    packages=['content_base'],
     include_package_data=True,
     classifiers=[
         'Development Status :: 0 - Alpha',
