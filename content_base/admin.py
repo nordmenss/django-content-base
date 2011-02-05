@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib import admin
+from content_base.models import *
 from ckeditor.fields import RichTextField
 from ckeditor_widget.widgets import *
 from django.conf import settings
