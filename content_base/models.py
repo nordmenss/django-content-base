@@ -14,7 +14,7 @@ class ContentField(models.TextField):
     def __init__(self,*args, **kwargs):
         super(ContentField, self).__init__(*args, **kwargs)
 
-class content(models.Model):
+class content_base(models.Model):
     title=models.CharField(max_length=150,null=True,verbose_name=_('Title'))
     #cat = models.ForeignKey(article_category,verbose_name=_('Category'))
     introtext=IntroField(null=False,verbose_name=_('Introtext'))
@@ -34,7 +34,7 @@ class content(models.Model):
         verbose_name =  _('Article')
         verbose_name_plural = _('Articles')
 
-class category(models.Model):
+class category_base(models.Model):
     title=models.CharField(max_length=150,null=True)
     published = models.BooleanField(default=True)
     content=ContentField(null=True)

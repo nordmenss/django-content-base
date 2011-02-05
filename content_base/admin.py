@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from bname.bname_functions import *
 from django.utils.translation import ugettext as _
 
-class content_admin(admin.ModelAdmin):
+class content_base_admin(admin.ModelAdmin):
     fieldsets = (
         (None, {'fields': (('title','url','lang'),'published')}),
         #(_("Intro, tags"), {'fields':('introtext','tags')}),
@@ -80,7 +80,7 @@ class content_admin(admin.ModelAdmin):
         form.save_m2m()
         return instance
 
-class category_admin(admin.ModelAdmin):
+class category_base_admin(admin.ModelAdmin):
     fieldsets = (
         (None, {'fields': (('title','url','lang'),('published','ordering'))}),
         (_("Content"), {'fields': ('content',)}),
