@@ -1,11 +1,9 @@
 from django import forms
 from django.contrib import admin
-from bname.apps.content.models import *
 from ckeditor.fields import RichTextField
-from bname.apps.custom_ckeditor_widget.widgets import *
+from ckeditor_widget.widgets import *
 from django.conf import settings
 from django.contrib.auth.models import User
-from bname.bname_functions import *
 from django.utils.translation import ugettext as _
 
 class content_base_admin(admin.ModelAdmin):
@@ -18,10 +16,10 @@ class content_base_admin(admin.ModelAdmin):
         (_('Modified'), {'fields': (('modified','modified_by',),)}),
     )
     formfield_overrides = {
-       IntroField:{"widget":CustomCKEditorWidget(config_name='introtext')},
-       ContentField:{"widget":CustomCKEditorWidget(config_name='content')},
+       IntroField:{"widget":CKEditorWidget(config_name='introtext')},
+       ContentField:{"widget":CKEditorWidget(config_name='content')},
        #TaggableManager:{"widget":forms.TextInput(attrs={'size':'100'})},
-       RichTextField:{"widget":CustomCKEditorWidget(config_name='content')},
+       RichTextField:{"widget":CKEditorWidget(config_name='content')},
     }
     #list_display=('title','lang_flag','published','url_html','created','introtext_html','tags_str',)
     list_display=('title_str','lang_flag','published','created','introtext_html',)
