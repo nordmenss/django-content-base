@@ -86,7 +86,7 @@ class category_base_admin(admin.ModelAdmin):
         (_('Meta'), {'fields': (('metadesc','metakeys',),)}),
     )
     formfield_overrides = {
-       ContentField:{"widget":CustomCKEditorWidget(config_name='content')},
+       ContentField:{"widget":CKEditorWidget(config_name='content')},
     }
     list_display=('title','lang','published','url','created','ordering',)
     list_editable=('published','ordering',)
