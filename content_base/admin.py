@@ -9,7 +9,9 @@ from django.utils.translation import ugettext as _
 
 class content_base_admin(admin.ModelAdmin):
     fieldsets = (
-        (None, {'fields': (('title','url','lang'),'published')}),
+        #(None, {'fields': (('title','url','lang'),'published')}),
+        (None, {'fields': (('title','url'),'published')}),
+        #(_("Category"), {'fields':('cat',)}),
         #(_("Intro, tags"), {'fields':('introtext','tags')}),
         (_("Intro"), {'fields':('introtext',)}),
         (_("Content"), {'fields': ('content',)}),
@@ -19,37 +21,16 @@ class content_base_admin(admin.ModelAdmin):
     formfield_overrides = {
        IntroField:{"widget":CKEditorWidget(config_name='introtext')},
        ContentField:{"widget":CKEditorWidget(config_name='content')},
-       #TaggableManager:{"widget":forms.TextInput(attrs={'size':'100'})},
        RichTextField:{"widget":CKEditorWidget(config_name='content')},
     }
     #list_display=('title','lang_flag','published','url_html','created','introtext_html','tags_str',)
-    list_display=('title_str','lang_flag','published','created','introtext_html',)
+    list_display=('title_str','published','created','introtext_html',)
     date_hierarchy = 'created'
     search_fields=('title','url',)
     list_filter = ('lang','published',)
     #list_editable=('published',)
     readonly_fields=('created','modified','created_by','modified_by',)
     prepopulated_fields = {"url": ("title",)}
-
-    class Media:
-        js_base_url = getattr(settings, 'TAGGING_AUTOCOMPLETE_JS_BASE_URL','%sjquery-autocomplete' % settings.MEDIA_URL)
-        css = {
-            'all': ('%s/jquery.autocomplete.css' % js_base_url,settings.MEDIA_URL+'css/admin/tags.css'),
-        }
-        js = (
-            '%s/lib/jquery.js' % js_base_url,
-            '%s/jquery.autocomplete.js' % js_base_url,
-            )
-
-    def tags_str(self, obj):
-        result=""
-        for tag in obj.tags.all():
-            if result!="":
-                result+=", "
-            result+="<b>"+unicode(tag.name)+"</b>"
-        return result
-    tags_str.short_description = 'Tags'
-    tags_str.allow_tags=True
 
     def introtext_html(self, obj):
         return "%s" % (obj.introtext)
@@ -63,12 +44,6 @@ class content_base_admin(admin.ModelAdmin):
 
     def url_html(self, obj):
         return "%s" % (obj.url+".html")
-
-    def lang_flag(self, obj):
-        return "<nobr>"+get_lang_title(obj.lang)+' <img src="'+settings.MEDIA_URL+'img/flags/'+obj.lang+'.gif" /></nobr>'
-    lang_flag.short_description = 'lang'
-    lang_flag.allow_tags=True
-
 
     def save_model(self, request, obj, form, change):
         instance = form.save(commit=False)
