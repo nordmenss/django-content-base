@@ -71,11 +71,6 @@ class category_base_admin(admin.ModelAdmin):
     readonly_fields=('created','created_by',)
     prepopulated_fields = {"url": ("title",)}
 
-    def lang_flag(self, obj):
-        return get_lang_title(obj.lang)+' <img src="'+settings.MEDIA_URL+'img/flags/'+obj.lang+'.gif" />'
-    lang_flag.short_description = 'lang'
-    lang_flag.allow_tags=True
-
     def save_model(self, request, obj, form, change):
         instance = form.save(commit=False)
         if not hasattr(instance, 'created_by'):
