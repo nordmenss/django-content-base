@@ -56,7 +56,8 @@ class content_base_admin(admin.ModelAdmin):
 
 class category_base_admin(admin.ModelAdmin):
     fieldsets = (
-        (None, {'fields': (('title','url','lang'),('published','ordering'))}),
+        #(None, {'fields': (('title','url','lang'),('published','ordering'))}),
+        (None, {'fields': (('title','url'),('published','ordering'))}),
         (_("Content"), {'fields': ('content',)}),
         (_('Created'), {'fields': (('created','created_by',),)}),
         (_('Meta'), {'fields': (('metadesc','metakeys',),)}),
@@ -64,7 +65,7 @@ class category_base_admin(admin.ModelAdmin):
     formfield_overrides = {
        ContentField:{"widget":CKEditorWidget(config_name='content')},
     }
-    list_display=('title','lang','published','url','created','ordering',)
+    list_display=('title','published','url','created','ordering',)
     list_editable=('published','ordering',)
     list_filter = ('title', )
     readonly_fields=('created','created_by',)
