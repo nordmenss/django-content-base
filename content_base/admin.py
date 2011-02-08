@@ -9,11 +9,9 @@ from django.utils.translation import ugettext as _
 
 class content_base_admin(admin.ModelAdmin):
     fieldsets = (
-        #(None, {'fields': (('title','url','lang'),'published')}),
-        (None, {'fields': (('title','url'),'published')}),
+        (None, {'fields': (('title','url'),'published')}),#(_("Intro, tags"), {'fields':('introtext','tags')}),
         #(_("Category"), {'fields':('cat',)}),
-        #(_("Intro, tags"), {'fields':('introtext','tags')}),
-        (_("Intro"), {'fields':('introtext',)}),
+        (_("Intro"), {'fields':('introtext',)}),#(_("Intro, tags"), {'fields':('introtext','tags')}),
         (_("Content"), {'fields': ('content',)}),
         (_('Created'), {'fields': (('created','created_by',),)}),
         (_('Modified'), {'fields': (('modified','modified_by',),)}),
@@ -27,8 +25,8 @@ class content_base_admin(admin.ModelAdmin):
     list_display=('title_str','published','created','introtext_html',)
     date_hierarchy = 'created'
     search_fields=('title','url',)
-    list_filter = ('lang','published',)
-    #list_editable=('published',)
+    list_filter = ('published',)#list_filter = ('lang','published',)
+    list_editable=('published',)
     readonly_fields=('created','modified','created_by','modified_by',)
     prepopulated_fields = {"url": ("title",)}
 
