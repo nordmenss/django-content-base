@@ -4,7 +4,6 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
-from bname.bname_functions import *
 from django.utils.translation import ugettext as _
 
 class IntroField(models.TextField):
