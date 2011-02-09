@@ -19,7 +19,7 @@ class content_base(models.Model):
     introtext=IntroField(null=False,verbose_name=_('Introtext'))
     published = models.BooleanField(default=True,verbose_name=_('Published'))
     content=ContentField(null=True,verbose_name=_('Content'))
-    created=models.DateField(auto_now_add=True,verbose_name=_('Created'))
+    created=models.DateTimeField(auto_now_add=True,verbose_name=_('Created'))
     modified=models.DateTimeField(auto_now_add=True,null=True,verbose_name=_('Modified'))
     url=models.SlugField(max_length=150,blank=False, null=False,verbose_name=_('url'))
     created_by  = models.ForeignKey(User, related_name="%(class)s_created")
